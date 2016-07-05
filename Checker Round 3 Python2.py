@@ -1,4 +1,4 @@
-
+import unicodecsv
 import urllib2
 import csv
 from bs4 import BeautifulSoup
@@ -31,8 +31,8 @@ def main():
 	try:
 		file = sys.argv[1]
 		outcome = []
-		with io.open(file, 'rt', encoding = 'utf-8', errors = 'ignore') as csvfile:
-			reader = csv.reader(csvfile)
+		with open(file, 'rt') as csvfile:
+			reader = unicodecsv.reader(csvfile, encoding = 'utf-8')
 			for row in reader:
 				if len(row) > 0:
 					url = row[0].encode('utf-8').strip()
@@ -68,4 +68,3 @@ if __name__ == "__main__":
 # Any edits I had to use to try it
 # (optional) What it was converted to/redirected to
 # (optional) A redirected URL if it was severe
-
