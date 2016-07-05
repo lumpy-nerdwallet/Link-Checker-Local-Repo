@@ -25,7 +25,10 @@ def httpStatus(url, result):
 			return page.getcode()
 	except urllib2.URLError as e:
 		print "Error in " + url
-		return e.code
+		if hasattr(e, 'code'):
+			return e.code
+		else:
+			return 1
 
 def main():
 	try:
