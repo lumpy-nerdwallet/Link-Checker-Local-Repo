@@ -23,7 +23,7 @@ def httpStatus(url, result):
 			return 399
 		else:
 			return page.getcode()
-	except reerror.URLError as e:
+	except urllib2.URLError as e:
 		print "Error in " + url
 		return e.code
 
