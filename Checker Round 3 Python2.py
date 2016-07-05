@@ -35,10 +35,13 @@ def main():
 			reader = unicodecsv.reader(csvfile, encoding = 'ISO-8859-1')
 			for row in reader:
 				if len(row) > 0:
-					url = row[0].encode('ISO-8859-1').strip()
+					try: 
+						url = row[0].encode('ISO-8859-1').strip()
+					except UnicodeEncodeError as e:
+						url = "Error String"
 					result = []
 					result.append(url) # Number 1 that goes in: it's merely just whitespace-removed
-					if not url.startswith('http'):
+					if not url.startswith('http') or url == "Error String":
 						continue
 					newURL = removeHTTPS(url) 
 					result.append(newURL) # Number 3: remove the https and last slash. some websites have that issue
