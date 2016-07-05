@@ -35,7 +35,7 @@ def main():
 			reader = csv.reader(csvfile)
 			for row in reader:
 				if len(row) > 0:
-					url = row[0].strip()
+					url = row[0].encode('utf-8').strip()
 					result = []
 					result.append(url) # Number 1 that goes in: it's merely just whitespace-removed
 					if not url.startswith('http'):
