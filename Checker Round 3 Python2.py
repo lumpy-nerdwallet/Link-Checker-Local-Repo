@@ -32,10 +32,10 @@ def main():
 		file = sys.argv[1]
 		outcome = []
 		with open(file, 'rt') as csvfile:
-			reader = unicodecsv.reader(csvfile, encoding = 'utf-8')
+			reader = unicodecsv.reader(csvfile, encoding = 'ISO-8859-1')
 			for row in reader:
 				if len(row) > 0:
-					url = row[0].encode('utf-8').strip()
+					url = row[0].encode('ISO-8859-1').strip()
 					result = []
 					result.append(url) # Number 1 that goes in: it's merely just whitespace-removed
 					if not url.startswith('http'):
