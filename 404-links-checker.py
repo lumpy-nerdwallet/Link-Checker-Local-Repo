@@ -4,11 +4,11 @@ import csv
 from bs4 import BeautifulSoup
 import sys
 import io
-import ssl
+#import ssl
 
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+#ctx = ssl.create_default_context()
+#ctx.check_hostname = False
+#ctx.verify_mode = ssl.CERT_NONE
 
 def permute(url):
 	options = []
@@ -31,7 +31,7 @@ def removeHTTPS(url):
 def httpStatus(url):
 	result = []
 	try: 
-		page = urllib2.urlopen(url, context = ctx)
+		page = urllib2.urlopen(url)
 		newURL = page.geturl()
 		result.append(url) # number 3: what I inserted in FINALLY
 		result.append(newURL) # number 4: what I got out FINALLY
